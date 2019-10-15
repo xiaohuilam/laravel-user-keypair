@@ -12,7 +12,7 @@ class LaravelUserKeypairServiceProvider extends ServiceProvider
     public function register()
     {
         $this->publishes([
-            dirname(__DIR__) . '/migrations/2019_09_04_031852_create_access_keys.php' => database_path('/migrations/'),
+            dirname(__DIR__) . '/migrations/2019_09_04_031852_create_access_keys.php' => database_path('/migrations/2019_09_04_031852_create_access_keys.php'),
             dirname(__DIR__) . '/config/keypair.php' => config_path('/keypair.php'),
             dirname(__DIR__) . '/src/Http/Middleware/Partner.stub' => app_path('/Http/Middleware/Partner.php'),
             dirname(__DIR__) . '/src/Models/AccessKey.stub' => app_path('/AccessKey.php'),

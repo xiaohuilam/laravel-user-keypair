@@ -1,0 +1,30 @@
+{
+    "name": "xiaohuilam/laravel-user-keypair",
+    "description": "Add accessKey pair in api for your user, with signature feature",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xiaohui.lam",
+            "email": "xiaohui.lam@icloud.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "laravel/framework": ">=5.2.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Xiaohuilam\\LaravelUserKeypair\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Xiaohuilam\\LaravelUserKeypair\\LaravelUserKeypairServiceProvider"
+            ]
+        }
+    }
+}

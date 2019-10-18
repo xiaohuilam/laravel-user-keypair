@@ -25,6 +25,6 @@ class ApiGuard extends TokenGuard
      */
     public function user()
     {
-        return parent::user()->user;
+        return data_get(parent::user(), 'user');
     }
 }

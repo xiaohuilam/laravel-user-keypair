@@ -71,7 +71,7 @@ abstract class BaseMiddleware
             abort(403, 'Bad signature' . (config('app.env') != 'production' ? (' ' . $sign) : ''));
         }
 
-        if ($key->user->deactivated()) {
+        if (method_exists($key->user, 'deactivated') && $key->user->deactivated()) {
             abort(403, 'User deactivated');
         }
 

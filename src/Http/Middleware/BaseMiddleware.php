@@ -1,7 +1,6 @@
 <?php
 namespace Xiaohuilam\LaravelUserKeypair\Http\Middleware;
 
-use App\Models\AccessKey;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 
@@ -18,6 +17,16 @@ abstract class BaseMiddleware
      * @return array 带签名的参数
      */
     abstract public function sign($resource, $parameters, $accessKeyId, $accessKeySecret);
+
+    /**
+     * 获取AccessKey模型类名
+     *
+     * @return string
+     */
+    protected function getAccessKeyClass()
+    {
+        return "\\App\\Models\\AccessKey";
+    }
 
     /**
      * AccessKey 验签
@@ -51,7 +60,7 @@ abstract class BaseMiddleware
         $parameters = $request->except(['sign',]);
         ksort($parameters);
 
-        $key = AccessKey::where('access_key_id', $accessKeyId)->first();
+        $key = app($this->getAccessKeyClass())->where('access_key_id', $accessKeyId)->first();
         if (!$key) {
             abort(404, 'AccessKey does not exists');
         }
